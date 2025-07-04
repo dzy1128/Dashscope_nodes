@@ -1,4 +1,4 @@
-from .dash_scope_nodes import TextGenerationNode
+from .dashscope_nodes import TextGenerationNode
 
 
 NODE_CLASS_MAPPINGS = {
