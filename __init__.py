@@ -6,5 +6,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "TextGeneration": "百炼模型文本生成"
+    "TextGeneration": "Generate Text"
 }
