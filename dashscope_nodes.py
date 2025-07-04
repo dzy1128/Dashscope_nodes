@@ -1,8 +1,7 @@
 import os
-from comfyui.base_node import BaseNode
 from openai import OpenAI
 import random
-class TextGenerationNode(BaseNode):
+class TextGenerationNode():
     def __init__(self):
         super().__init__()
         # 从环境变量中获取 API 密钥
