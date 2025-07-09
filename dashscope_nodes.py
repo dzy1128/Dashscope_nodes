@@ -78,7 +78,7 @@ class ImageUnderstandingNode():
     FUNCTION = "understand_image"
     CATEGORY = "image_understanding"
 
-    def understand_image(self, image,system_prompt, user_prompt, top_p, temperature, seed):
+    def understand_image(self, image, system_prompt, user_prompt, top_p, temperature, seed):
         if not self.api_key:
             return ("错误: 未找到 API 密钥",)
         try:
@@ -95,9 +95,8 @@ class ImageUnderstandingNode():
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': [{
                         "type": "image_url",
-                        "image_url": {"url": image_base64},
-                        "type": "text",
-                        "text": user_prompt
+                        "image_url": {"url": f"data:image/jpeg;base64,{image_base64}"},
+                        "type": "text","text": user_prompt
                     }]}
                 ],
                 top_p = top_p,
