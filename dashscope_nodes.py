@@ -95,7 +95,7 @@ class ImageUnderstandingNode():
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': [{
                         "type": "image_url",
-                        "image_url": {"url": f"data:image/jpeg;base64,{image_base64}"},
+                        "image_url": {"url": f"data:image/png;base64,{image_base64}"},
                         "type": "text","text": user_prompt
                     }]}
                 ],
