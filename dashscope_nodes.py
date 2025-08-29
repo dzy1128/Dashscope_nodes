@@ -26,6 +26,7 @@ class TextGenerationNode():
         }
 
     RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("text",)
     FUNCTION = "generate_text"
     CATEGORY = "text_generation"
 
@@ -75,6 +76,7 @@ class ImageUnderstandingNode():
         }
 
     RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("description",)
     FUNCTION = "understand_image"
     CATEGORY = "image_understanding"
 
