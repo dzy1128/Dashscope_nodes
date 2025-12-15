@@ -19,6 +19,7 @@ class TextGenerationNode():
             "required": {
                 "system_prompt": ("STRING", {"default": "You are a helpful assistant."}),
                 "user_prompt": ("STRING", {"default": "你是谁？"}),
+                "model": ("STRING", {"default": "qwen-plus", "choices": ["qwen-plus", "qwen3-max"]}),
                 "top_p": ("FLOAT",{"default": 0.8,"min": 0.01, "max": 1.0}),
                 "temperature" :("FLOAT", {"default": 1.0, "min": 0, "max": 1.9999}),
                 "seed": ("INT",{"default": 0, "min": 0 , "max": 0xffffffffffffffff})
@@ -30,7 +31,7 @@ class TextGenerationNode():
     FUNCTION = "generate_text"
     CATEGORY = "text_generation"
 
-    def generate_text(self, system_prompt, user_prompt, top_p, temperature, seed):
+    def generate_text(self, system_prompt, user_prompt, model, top_p, temperature, seed):
         if not self.api_key:
             return ("错误: 未找到 API 密钥",)
         random.seed(seed)
@@ -42,7 +43,7 @@ class TextGenerationNode():
             )
 
             completion = client.chat.completions.create(
-                model="qwen-plus",
+                model=model,
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': user_prompt}
@@ -69,6 +70,7 @@ class ImageUnderstandingNode():
                 "image": ("IMAGE",),
                 "system_prompt": ("STRING", {"default": "You are a helpful assistant."}),
                 "user_prompt": ("STRING", {"default": "详细描述这张图片。"}),
+                "model": ("STRING", {"default": "qwen-vl-max", "choices": ["qwen-vl-max", "qwen-vl-plus"]}),
                 "top_p": ("FLOAT",{"default": 0.8,"min": 0.01, "max": 1.0}),
                 "temperature" :("FLOAT", {"default": 1.0, "min": 0, "max": 1.9999}),
                 "seed": ("INT",{"default": 0, "min": 0 , "max": 0xffffffffffffffff})
@@ -80,7 +82,7 @@ class ImageUnderstandingNode():
     FUNCTION = "understand_image"
     CATEGORY = "image_understanding"
 
-    def understand_image(self, image, system_prompt, user_prompt, top_p, temperature, seed):
+    def understand_image(self, image, system_prompt, user_prompt, model, top_p, temperature, seed):
         if not self.api_key:
             return ("错误: 未找到 API 密钥",)
         try:
@@ -92,7 +94,7 @@ class ImageUnderstandingNode():
             )
 
             completion = client.chat.completions.create(
-                model="qwen-vl-max",
+                model=model,
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': [{
