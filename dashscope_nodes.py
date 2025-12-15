@@ -19,7 +19,7 @@ class TextGenerationNode():
             "required": {
                 "system_prompt": ("STRING", {"default": "You are a helpful assistant."}),
                 "user_prompt": ("STRING", {"default": "你是谁？"}),
-                "model": ("STRING", {"default": "qwen-plus", "choices": ["qwen-plus", "qwen3-max"]}),
+                "model": (["qwen-plus", "qwen3-max"],),
                 "top_p": ("FLOAT",{"default": 0.8,"min": 0.01, "max": 1.0}),
                 "temperature" :("FLOAT", {"default": 1.0, "min": 0, "max": 1.9999}),
                 "seed": ("INT",{"default": 0, "min": 0 , "max": 0xffffffffffffffff})
@@ -70,7 +70,7 @@ class ImageUnderstandingNode():
                 "image": ("IMAGE",),
                 "system_prompt": ("STRING", {"default": "You are a helpful assistant."}),
                 "user_prompt": ("STRING", {"default": "详细描述这张图片。"}),
-                "model": ("STRING", {"default": "qwen-vl-max", "choices": ["qwen-vl-max", "qwen-vl-plus"]}),
+                "model": (["qwen-vl-max", "qwen-vl-plus"],),
                 "top_p": ("FLOAT",{"default": 0.8,"min": 0.01, "max": 1.0}),
                 "temperature" :("FLOAT", {"default": 1.0, "min": 0, "max": 1.9999}),
                 "seed": ("INT",{"default": 0, "min": 0 , "max": 0xffffffffffffffff})
