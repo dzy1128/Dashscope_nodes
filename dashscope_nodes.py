@@ -42,7 +42,7 @@ class TextGenerationNode():
             )
 
             completion = client.chat.completions.create(
-                model="qwen-plus",
+                model="qwen3.6-flash",
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': user_prompt}
@@ -92,7 +92,7 @@ class ImageUnderstandingNode():
             )
 
             completion = client.chat.completions.create(
-                model="qwen-vl-max",
+                model="qwen3.6-flash",
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': [{
