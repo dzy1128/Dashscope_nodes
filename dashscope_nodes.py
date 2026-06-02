@@ -92,7 +92,7 @@ class ImageUnderstandingNode():
             )
 
             completion = client.chat.completions.create(
-                model="qwen3.6-flash",
+                model="qwen3-vl-flash",
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': [{
